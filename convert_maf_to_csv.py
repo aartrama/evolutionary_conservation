@@ -1,6 +1,12 @@
 """
-This code is for obtaining only the chromosomal co-ordinates
-from all MAF files, and storing them in csv files.
+This code obtains only the chromosomal co-ordinates from
+an unzipped MAF file, and storing them in CSV files as follows:
+
+hg19,gorGor1,papHam1,oryCun2,panTro2,galGal3,...
+chr1 10917 11396 +,-,-,-,chr15 13606 14061 -,...
+chr1 11396 11489 +,-,-,-,chr15 14061 14103 -,...
+chr1 11489 11570 +,-,-,-,chr15 14103 14184 -,...
+
 """
 
 #importing modules
@@ -72,3 +78,5 @@ def parsing_maf_file(maf_file):
                             "sorAra1":None, "ornAna1":None, "anoCar1":None, "fr2":None, "felCat3":None,\
                             "rn4":None, "gasAcu1":None, "petMar1":None}
                     continue
+
+#parsing_maf_file("chr1.maf")
