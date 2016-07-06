@@ -1,6 +1,6 @@
 """
 This code obtains only the chromosomal co-ordinates from
-an unzipped MAF file, and stores them in CSV files as follows:
+an unzipped MAF file, and stores them in a CSV file as follows:
 
 hg19,gorGor1,papHam1,oryCun2,panTro2,galGal3,...
 chr1 10917 11396 +,-,-,-,chr15 13606 14061 -,...
