@@ -37,20 +37,16 @@ dictionary = {"RBP": [], "hg19_coordinates": [], "hg19": [], "gorGor1": [], "pap
  "rn4":[], "gasAcu1":[], "petMar1":[]}
 
 def list_of_chrom():
-    global list_of_chromosomes
     for i in range(1, 23):
         list_of_chromosomes.append("chr"+str(i))
 
 def create_bed_file_dict():
-    global dictionary_of_bed_file
     for i in range(1, 23):
         dictionary_of_bed_file["chr"+str(i)] = \
                 {"list_of_chr": [], "list_of_start": [], \
                 "list_of_stop": [], "list_of_strand": []}
 
 def store_bed_file(filename):
-    global list_of_chromosomes
-    global dictionary_of_bed_file
     with open(filename, "r") as f:
         for lines in f:
             lines = lines.strip().split("\t")
@@ -61,7 +57,6 @@ def store_bed_file(filename):
                 dictionary_of_bed_file[lines[0]]["list_of_strand"].append(lines[5])
 
 def create_maf_file():
-    global dictionary_of_maf_file
     for i in range(1, 23):
         dictionary_of_maf_file["chr"+str(i)] = \
                 {"list_of_chr_maf": [], "list_of_start_maf": [], \
@@ -69,8 +64,6 @@ def create_maf_file():
                 "rest_lines": []}
 
 def store_maf_file(maf_csv_filename):
-    global list_of_chromosomes
-    global dictionary_of_maf_file
     with open(maf_csv_filename, "r") as f:
         next(f)
         for lines in f:
@@ -84,9 +77,6 @@ def store_maf_file(maf_csv_filename):
                 dictionary_of_maf_file[lines[0][0]]["rest_lines"].append(lines[1:])
 
 def create_sheet1(sheet1):
-    global list_of_chromosomes
-    global dictionary_of_maf_file
-    global dictionary_of_bed_file
     with open(sheet1, "w") as f:
         print>>f, "RBP,hg19,gorGor1,papHam1,oryCun2,panTro2,galGal3,echTel1,bosTau4," \
                 "oryLat2,turTru1,dipOrd1,canFam2,myoLuc1,choHof1,monDom5,calJac1,equCab2," \
@@ -104,8 +94,6 @@ def create_sheet1(sheet1):
                                     ",".join(dictionary_of_maf_file[chromosome]["rest_lines"][j])
 
 def read_sheet1(sheet1):
-    global dictionary
-    global species
     with open(sheet1, "r") as f:
         next(f)
         for lines in f:
@@ -120,7 +108,6 @@ def read_sheet1(sheet1):
 
 
 def create_sheet2(sheet2):
-    global dictionary
     with open(sheet2, "w") as f:
         print>>f, "RBP,hg19,hg19,gorGor1,papHam1,oryCun2,panTro2,galGal3,echTel1,bosTau4," \
                 "oryLat2,turTru1,dipOrd1,canFam2,myoLuc1,choHof1,monDom5,calJac1,equCab2," \
